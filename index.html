@@ -8,6 +8,7 @@
     <meta property="og:title" content="Summer Supa - 4v4 Basketball Tournament">
     <meta property="og:description" content="Join the Summer Supa 4v4 Basketball Tournament on June 20, 2025. Compete for $300 prize pool and support charity!">
     <meta property="og:type" content="event">
+    <link rel="icon" type="image/png" href="assets/logo.png">
     <title>Summer Supa - 4v4 Basketball Tournament</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -146,20 +147,26 @@
             <div id="location" class="location-time">
                 <div class="location map-preview">
                     <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
-                    <a href="https://maps.google.com/?q=24950+Riding+Center+Drive,+South+Riding,+VA+20152" 
+                    <a href="https://maps.google.com/?q=Hartland+House+Ln" 
                        target="_blank" 
                        class="location-link">
-                        <p>24950 Riding Center Drive</p>
+                        <p>Hartland House Ln</p>
                         <p>South Riding, VA 20152</p>
                         <div class="map-hover">
                             <i class="fas fa-map"></i>
-                            <span>View on Google Maps</span>
+                            <span>Open in Google Maps</span>
+                            <p class="map-preview-text">Click to view location</p>
                         </div>
                     </a>
                 </div>
                 <div class="time">
                     <h3><i class="fas fa-calendar"></i> Date</h3>
                     <p>June 20, 2025 at 12:30 PM</p>
+                    <a href="data:text/calendar;charset=utf-8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20250620T123000%0ADTEND:20250620T170000%0ASUMMARY:Summer Supa Basketball Tournament%0ADESCRIPTION:4v4 Basketball Tournament with $300 prize pool!%0ALOCATION:24950 Riding Center Drive, South Riding, VA 20152%0AEND:VEVENT%0AEND:VCALENDAR" 
+                       class="calendar-btn" 
+                       download="summer-supa-tournament.ics">
+                        <i class="fas fa-calendar-plus"></i> Add to Calendar
+                    </a>
                 </div>
             </div>
 
@@ -183,6 +190,13 @@
 
     <script>
         // Countdown Timer
+        let previousValues = {
+            days: '00',
+            hours: '00',
+            minutes: '00',
+            seconds: '00'
+        };
+
         function updateCountdown() {
             const tournamentDate = new Date('June 20, 2025 12:30:00').getTime();
             const now = new Date().getTime();
@@ -193,10 +207,29 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.querySelector('.days').textContent = days.toString().padStart(2, '0');
-            document.querySelector('.hours').textContent = hours.toString().padStart(2, '0');
-            document.querySelector('.minutes').textContent = minutes.toString().padStart(2, '0');
-            document.querySelector('.seconds').textContent = seconds.toString().padStart(2, '0');
+            const daysStr = days.toString().padStart(2, '0');
+            const hoursStr = hours.toString().padStart(2, '0');
+            const minutesStr = minutes.toString().padStart(2, '0');
+            const secondsStr = seconds.toString().padStart(2, '0');
+
+            const elements = {
+                days: document.querySelector('.days'),
+                hours: document.querySelector('.hours'),
+                minutes: document.querySelector('.minutes'),
+                seconds: document.querySelector('.seconds')
+            };
+
+            // Update and animate changed values
+            Object.entries(elements).forEach(([key, element]) => {
+                const newValue = eval(key + 'Str');
+                if (previousValues[key] !== newValue) {
+                    element.textContent = newValue;
+                    element.classList.remove('number-changed');
+                    void element.offsetWidth; // Trigger reflow
+                    element.classList.add('number-changed');
+                    previousValues[key] = newValue;
+                }
+            });
         }
 
         // Update countdown every second
@@ -207,6 +240,18 @@
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             this.classList.toggle('active');
             document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const menu = document.querySelector('.nav-links');
+            const menuButton = document.querySelector('.menu-toggle');
+            if (menu.classList.contains('active') && 
+                !menu.contains(e.target) && 
+                !menuButton.contains(e.target)) {
+                menu.classList.remove('active');
+                menuButton.classList.remove('active');
+            }
         });
 
         // Smooth Scroll
