@@ -745,4 +745,43 @@ html {
 .calendar-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(255, 70, 37, 0.3);
+}
+
+.refreshments-note {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 800px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.refreshments-note h3 {
+    color: #FF4625;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.refreshments-note p {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.refreshments-icons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.refreshments-icons span {
+    font-size: 1.8rem;
+    color: #FF7F25;
+}
+
+.refreshments-icons span:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
 } 
