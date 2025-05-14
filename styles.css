@@ -399,11 +399,35 @@ i {
 }
 
 /* Share Buttons */
-.share-buttons,
-.share-btn,
-.share-btn.facebook,
-.share-btn.twitter,
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.share-btn {
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.share-btn:hover {
+    transform: translateY(-2px);
+}
+
 .share-btn.copy {
+    background: var(--gray);
+    color: var(--dark);
+}
+
+.share-btn.facebook,
+.share-btn.twitter {
     display: none;
 }
 
@@ -576,10 +600,14 @@ html {
 }
 
 .flow-card.championship::after {
-    content: '🔥';
+    content: '';
     position: absolute;
     bottom: 10px;
     right: 10px;
-    font-size: 1.5rem;
-    animation: fireFloat 2s ease-in-out infinite;
+    width: 50px;
+    height: 50px;
+    background-image: url('assets/78a121b90217c474da633a43a17a43-unscreen.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 } 

@@ -171,6 +171,11 @@
         <section id="contact" class="contact container">
             <h2><i class="fas fa-envelope"></i> Contact Information</h2>
             <p>For more information, email: <a href="mailto:gameforgewebsites@gmail.com">gameforgewebsites@gmail.com</a></p>
+            <div class="share-buttons">
+                <button onclick="share('copy')" class="share-btn copy">
+                    <i class="fas fa-link"></i> Copy Link
+                </button>
+            </div>
         </section>
     </main>
     
@@ -213,6 +218,14 @@
                 });
             });
         });
+
+        // Share Function
+        function share(platform) {
+            if (platform === 'copy') {
+                navigator.clipboard.writeText(window.location.href)
+                    .then(() => alert('Link copied to clipboard!'));
+            }
+        }
     </script>
 </body>
 </html> 
