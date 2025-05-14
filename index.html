@@ -3,25 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Summer Supa - 4v4 Basketball Tournament in South Riding, VA. Join us for competitive basketball and support charity!">
+    <meta name="keywords" content="basketball tournament, 4v4 basketball, South Riding, VA, charity, sports event">
+    <meta property="og:title" content="Summer Supa - 4v4 Basketball Tournament">
+    <meta property="og:description" content="Join the Summer Supa 4v4 Basketball Tournament on June 20, 2025. Compete for $300 prize pool and support charity!">
+    <meta property="og:type" content="event">
     <title>Summer Supa - 4v4 Basketball Tournament</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <nav class="nav-menu">
+        <div class="container">
+            <button class="menu-toggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#tournament-details">Details</a></li>
+                <li><a href="#rules">Rules</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://tally.so/r/mRgO9Q" class="register-btn" target="_blank">Register Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <header class="hero">
         <div class="container">
             <h1>Summer Supa</h1>
             <h2>4v4 Basketball Tournament</h2>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="days">00</span>
+                    <span class="label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="hours">00</span>
+                    <span class="label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="minutes">00</span>
+                    <span class="label">Minutes</span>
+                </div>
+            </div>
         </div>
     </header>
 
     <main>
-        <section class="intro container">
-            <p>Join us for an exciting local 4v4 basketball tournament that combines competitive spirit with a charitable cause.</p>
-        </section>
-
-        <section class="tournament-details container">
+        <section id="tournament-details" class="tournament-details container">
             <h2><i class="fas fa-basketball"></i> Tournament Details</h2>
             <div class="details-grid">
                 <div class="detail-card">
@@ -50,15 +82,47 @@
                 </div>
             </div>
 
-            <div class="location-time">
-                <div class="location">
+            <section id="rules" class="rules-section">
+                <h2><i class="fas fa-book"></i> Tournament Rules</h2>
+                <div class="rules-grid">
+                    <div class="rule-card">
+                        <h3>Game Format</h3>
+                        <ul>
+                            <li>4v4 half-court games</li>
+                            <li>15-minute games or first to 21 points</li>
+                            <li>1 point inside, 2 points outside arc</li>
+                            <li>Winner must win by 2 points</li>
+                        </ul>
+                    </div>
+                    <div class="rule-card">
+                        <h3>Tournament Structure</h3>
+                        <ul>
+                            <li>8 teams double elimination</li>
+                            <li>3 game minimum guaranteed</li>
+                            <li>Championship game: full court</li>
+                            <li>Teams must arrive 30 minutes before first game</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <div id="location" class="location-time">
+                <div class="location map-preview">
                     <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
-                    <p>24950 Riding Center Drive</p>
-                    <p>South Riding, VA 20152</p>
+                    <a href="https://maps.google.com/?q=24950+Riding+Center+Drive,+South+Riding,+VA+20152" 
+                       target="_blank" 
+                       class="location-link">
+                        <p>24950 Riding Center Drive</p>
+                        <p>South Riding, VA 20152</p>
+                        <div class="map-hover">
+                            <i class="fas fa-map"></i>
+                            <span>View on Google Maps</span>
+                        </div>
+                    </a>
                 </div>
                 <div class="time">
                     <h3><i class="fas fa-calendar"></i> Date</h3>
-                    <p>June 17, 2025</p>
+                    <p>June 20, 2025</p>
                 </div>
             </div>
 
@@ -67,19 +131,79 @@
             </div>
         </section>
 
-        <section class="contact container">
+        <section id="contact" class="contact container">
             <h2><i class="fas fa-envelope"></i> Contact Information</h2>
             <p>For more information, email: <a href="mailto:gameforgewebsites@gmail.com">gameforgewebsites@gmail.com</a></p>
+            <div class="share-buttons">
+                <button onclick="share('facebook')" class="share-btn facebook">
+                    <i class="fab fa-facebook"></i> Share
+                </button>
+                <button onclick="share('twitter')" class="share-btn twitter">
+                    <i class="fab fa-twitter"></i> Tweet
+                </button>
+                <button onclick="share('copy')" class="share-btn copy">
+                    <i class="fas fa-link"></i> Copy Link
+                </button>
+            </div>
         </section>
     </main>
+    
+    <div class="prize-note">$291*</div>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <img src="assets/basketball.png" alt="Basketball" class="footer-ball">
-                <span class="prize-note">$291*</span>
-            </div>
-        </div>
-    </footer>
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const tournamentDate = new Date('June 20, 2025 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = tournamentDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.querySelector('.days').textContent = days.toString().padStart(2, '0');
+            document.querySelector('.hours').textContent = hours.toString().padStart(2, '0');
+            document.querySelector('.minutes').textContent = minutes.toString().padStart(2, '0');
+        }
+
+        // Update countdown every minute
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+
+        // Mobile Menu Toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Share Functions
+        function share(platform) {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('Join us for the Summer Supa 4v4 Basketball Tournament!');
+            
+            switch(platform) {
+                case 'facebook':
+                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
+                    break;
+                case 'twitter':
+                    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`);
+                    break;
+                case 'copy':
+                    navigator.clipboard.writeText(window.location.href)
+                        .then(() => alert('Link copied to clipboard!'));
+                    break;
+            }
+        }
+    </script>
 </body>
 </html> 

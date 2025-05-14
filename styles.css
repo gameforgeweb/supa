@@ -11,6 +11,8 @@
     --dark: #1A1A1A;
     --light: #FFFFFF;
     --gray: #F5F5F5;
+    --gradient-start: #FF4625;
+    --gradient-end: #FF7F25;
 }
 
 body {
@@ -18,6 +20,8 @@ body {
     line-height: 1.6;
     color: var(--dark);
     background-color: var(--light);
+    position: relative;
+    min-height: 100vh;
 }
 
 .container {
@@ -29,9 +33,14 @@ body {
 
 /* Typography */
 h1 {
+    font-family: 'Barlow', sans-serif;
     font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--light);
+    font-weight: 700;
+    font-style: italic;
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     text-transform: uppercase;
 }
 
@@ -49,14 +58,14 @@ h3 {
 
 /* Header/Hero Section */
 .hero {
-    background: linear-gradient(135deg, var(--primary-orange), var(--primary-blue));
-    color: var(--light);
+    background: var(--light);
+    color: var(--dark);
     padding: 3rem 0;
     text-align: center;
 }
 
 .hero h2 {
-    color: var(--light);
+    color: var(--dark);
     font-size: 1.2rem;
     margin-top: 0.5rem;
 }
@@ -139,29 +148,14 @@ section {
     text-decoration: underline;
 }
 
-/* Footer */
-footer {
-    background: var(--dark);
-    color: var(--light);
-    padding: 2rem 0;
-    margin-top: 2rem;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.footer-ball {
-    width: 50px;
-    height: auto;
-}
-
+/* Prize Note */
 .prize-note {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--primary-orange);
+    color: var(--gradient-start);
 }
 
 /* Icons */
@@ -205,5 +199,260 @@ i {
     * {
         animation: none !important;
         transition: none !important;
+    }
+}
+
+/* Navigation */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--light);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--dark);
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 1rem;
+}
+
+.nav-links a {
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--gradient-start);
+}
+
+.register-btn {
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    color: var(--light) !important;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+/* Countdown Timer */
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.countdown-item {
+    text-align: center;
+}
+
+.countdown-item span {
+    display: block;
+}
+
+.countdown-item .days,
+.countdown-item .hours,
+.countdown-item .minutes {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gradient-start);
+}
+
+.countdown-item .label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+}
+
+/* Rules Section */
+.rules-section {
+    margin: 3rem 0;
+}
+
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.rule-card {
+    background: var(--gray);
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.rule-card:hover {
+    transform: translateY(-5px);
+}
+
+.rule-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.rule-card li {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.rule-card li::before {
+    content: "🏀";
+    position: absolute;
+    left: 0;
+    font-size: 0.8rem;
+}
+
+/* Location Map Preview */
+.map-preview {
+    position: relative;
+    overflow: hidden;
+}
+
+.location-link {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+}
+
+.map-hover {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255,0.9);
+    padding: 1rem;
+    text-align: center;
+    transition: bottom 0.3s ease;
+}
+
+.location-link:hover .map-hover {
+    bottom: 0;
+}
+
+/* Share Buttons */
+.share-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.share-btn {
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.share-btn:hover {
+    transform: translateY(-2px);
+}
+
+.share-btn.facebook {
+    background: #1877f2;
+    color: white;
+}
+
+.share-btn.twitter {
+    background: #1da1f2;
+    color: white;
+}
+
+.share-btn.copy {
+    background: var(--gray);
+    color: var(--dark);
+}
+
+/* Smooth Scroll Behavior */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--light);
+        flex-direction: column;
+        padding: 1rem 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 0.5rem 0;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    .countdown {
+        gap: 1rem;
+    }
+
+    .countdown-item .days,
+    .countdown-item .hours,
+    .countdown-item .minutes {
+        font-size: 2rem;
+    }
+
+    .share-buttons {
+        flex-direction: column;
     }
 } 
