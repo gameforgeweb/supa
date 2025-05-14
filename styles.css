@@ -279,7 +279,8 @@ i {
 
 .countdown-item .days,
 .countdown-item .hours,
-.countdown-item .minutes {
+.countdown-item .minutes,
+.countdown-item .seconds {
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--gradient-start);
@@ -448,8 +449,9 @@ html {
 
     .countdown-item .days,
     .countdown-item .hours,
-    .countdown-item .minutes {
-        font-size: 2rem;
+    .countdown-item .minutes,
+    .countdown-item .seconds {
+        font-size: 1.8rem;
     }
 
     .share-buttons {

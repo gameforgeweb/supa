@@ -48,6 +48,10 @@
                     <span class="minutes">00</span>
                     <span class="label">Minutes</span>
                 </div>
+                <div class="countdown-item">
+                    <span class="seconds">00</span>
+                    <span class="label">Seconds</span>
+                </div>
             </div>
         </div>
     </header>
@@ -186,22 +190,24 @@
     <script>
         // Countdown Timer
         function updateCountdown() {
-            const tournamentDate = new Date('June 20, 2025 00:00:00').getTime();
+            const tournamentDate = new Date('June 20, 2025 12:30:00').getTime();
             const now = new Date().getTime();
             const distance = tournamentDate - now;
 
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             document.querySelector('.days').textContent = days.toString().padStart(2, '0');
             document.querySelector('.hours').textContent = hours.toString().padStart(2, '0');
             document.querySelector('.minutes').textContent = minutes.toString().padStart(2, '0');
+            document.querySelector('.seconds').textContent = seconds.toString().padStart(2, '0');
         }
 
-        // Update countdown every minute
+        // Update countdown every second
         updateCountdown();
-        setInterval(updateCountdown, 60000);
+        setInterval(updateCountdown, 1000);
 
         // Mobile Menu Toggle
         document.querySelector('.menu-toggle').addEventListener('click', function() {
