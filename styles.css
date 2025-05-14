@@ -15,6 +15,18 @@
     --gradient-end: #FF7F25;
 }
 
+/* Initial Page Load Animation */
+@keyframes unblur {
+    from {
+        filter: blur(10px);
+        opacity: 0;
+    }
+    to {
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
@@ -22,6 +34,7 @@ body {
     background-color: var(--light);
     position: relative;
     min-height: 100vh;
+    animation: unblur 1s ease-out forwards;
 }
 
 .container {
@@ -284,12 +297,14 @@ i {
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--gradient-start);
+    font-family: 'Poppins', sans-serif;
 }
 
 .countdown-item .label {
     font-size: 0.9rem;
     text-transform: uppercase;
     margin-top: 0.5rem;
+    color: var(--dark);
 }
 
 /* Rules Section */
