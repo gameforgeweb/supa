@@ -171,17 +171,6 @@
         <section id="contact" class="contact container">
             <h2><i class="fas fa-envelope"></i> Contact Information</h2>
             <p>For more information, email: <a href="mailto:gameforgewebsites@gmail.com">gameforgewebsites@gmail.com</a></p>
-            <div class="share-buttons">
-                <button onclick="share('facebook')" class="share-btn facebook">
-                    <i class="fab fa-facebook"></i> Share
-                </button>
-                <button onclick="share('twitter')" class="share-btn twitter">
-                    <i class="fab fa-twitter"></i> Tweet
-                </button>
-                <button onclick="share('copy')" class="share-btn copy">
-                    <i class="fas fa-link"></i> Copy Link
-                </button>
-            </div>
         </section>
     </main>
     
@@ -224,25 +213,6 @@
                 });
             });
         });
-
-        // Share Functions
-        function share(platform) {
-            const url = encodeURIComponent(window.location.href);
-            const text = encodeURIComponent('Join us for the Summer Supa 4v4 Basketball Tournament!');
-            
-            switch(platform) {
-                case 'facebook':
-                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
-                    break;
-                case 'twitter':
-                    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`);
-                    break;
-                case 'copy':
-                    navigator.clipboard.writeText(window.location.href)
-                        .then(() => alert('Link copied to clipboard!'));
-                    break;
-            }
-        }
     </script>
 </body>
 </html> 
